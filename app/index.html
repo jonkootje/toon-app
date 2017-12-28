@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <title>Toon - By @Jonkootje</title>
+        <meta name="description" content="An app build by @Jonkootje (https://www.web-sj.com, https://www.github.com/jonkootje)">
+
+        <link type="text/css" rel="stylesheet" href="main.css">
+        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    </head>
+
+    <body>
+
+        <div id="settings">
+            <div class="section">
+                <h3>Settings</h3>
+                <form id="settings_form" style="margin-bottom: 0px;" method="" action="javascript:toon.saveSettings(`#settings_form`)">
+                    <input type="text" class="niceinput" name="endpoint" placeholder="API Endpoint*">
+                    <input type="number" step="1" class="niceinput" name="port" placeholder="Port (default: 80)">
+                    <input type="number" class="niceinput" name="refreshrate" placeholder="Refresh interval (default: 10 Sec)" min="1" max="1000" step="1">
+                    <div style="text-align: center; margin-top: 16px;">
+                        <input type="submit" class="submitbtn" value="Verbinden">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="main" class="block">
+
+            <div class="settingsbtn" onclick="toon.openSettings()"></div>
+
+            <div class="section" style="text-align: center">
+                <img class="fireicon" id="burner" src="icon-fire.png">
+            </div>
+
+            <div class="section">
+                <div class="monitor">
+                    <div class="temp_left tempmonitor_parent">
+                        <span class="tempmonitor" id="current_temp">0</span>
+                        <span class="comminguptemp" id="target_temp">0</span>
+                    </div>
+                    <div class="temp_right">
+                        <button class="tempchange increase"></button>
+                        <button class="tempchange decrease"></button>
+                    </div>
+                </div>
+                <div class="nextevent">
+                    <span id="comming">Naar Comfort om 10.00</span>
+                    <div class="togglebutton" id="toggleprogram"></div>
+                </div>
+
+            </div>
+
+            <div class="section">
+                <div class="programbtn act_away" data-state="away">Weg</div>
+                <div class="programbtn act_home" data-state="home">Thuis</div>
+                <div class="programbtn act_sleep" data-state="sleep">Slapen</div>
+                <div class="programbtn act_comfort" data-state="comfort">Comfort</div>
+            </div>
+
+            <div class="section connection loading">
+                <span class="connection_status">Loading...</span>
+            </div>
+
+            <div class="section">
+                <span class="credits">By <a target="_blank" href="https://www.github.com/jonkootje">@Jonkootje</a></span>
+            </div>
+        </div>
+
+    </body>
+</html>

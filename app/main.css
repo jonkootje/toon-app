@@ -1,0 +1,327 @@
+@font-face {
+    font-family:"Etelka Medium Pro";
+    src: url("etelka.ttf") /* TTF file for CSS3 browsers */
+}
+
+h1,h2,h3 {
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+* {
+    --colors-background: #f0f0f0;
+    --colors-blocks: #fbfbfb;
+    --colors-text: #181818;
+    --colors-sub-text: #a6a6a6;
+    --colors-positive: #689f39;
+    --colors-negative: #dd4300;
+    --colors-active: #58a8ea;
+
+    color: var(--colors-text);
+    font-family: "Etelka Medium Pro";
+}
+
+body {
+    background-color: var(--colors-background);
+}
+
+.block {
+    position: absolute;
+    width: calc(100% - 32px - 32px);
+    /* height: calc(50% - 32px - 32px); */
+    top: 16px;
+    left: 16px;
+    background-color: var(--colors-blocks);
+    border-radius: 15px;
+    position: relative;
+    padding-left: 16px;
+    padding-right: 16px;
+    
+}
+
+.block .section, #settings .section {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--colors-background);
+}
+
+.block .section:last-child, #settings .section:last-child {
+    border-bottom: none;
+}
+
+.block img.fireicon {
+    height: 30px;
+}
+/* .block img.fireicon:not(.active) {
+    opacity: .6;
+} */
+
+.settingsbtn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    height: 30px;
+    width: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('icon-settings.png');
+}
+
+.block span.tempmonitor {
+    display: block;
+    font-size: 40px;
+    transition: 200ms ease;
+}
+.block span.tempmonitor:after {
+    content: '';
+    display: inline-block;
+    height: 8px;
+    width: 8px;
+    border: 5px solid var(--colors-text);
+    border-radius: 50%;
+    vertical-align: super;
+    margin-left: 4px;
+}
+
+.block span.comminguptemp {
+    color: var(--colors-sub-text);
+    font-size: 20px;
+    transition: 200ms ease;
+}
+.block span.comminguptemp:after {
+    content: '';
+    display: inline-block;
+    height: 5px;
+    width: 5px;
+    border: 2px solid var(--colors-sub-text);
+    border-radius: 50%;
+    vertical-align: super;
+    margin-left: 2px;
+}
+
+.block span.comminguptemp:before {
+    content: '';
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    background-image: url('icon-arrow.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+    margin-right: 5px;
+    transition: 200ms ease;
+}
+
+.block span.comminguptemp.more:before {
+    transform: rotate(-90deg);   
+}
+
+
+.block span.comminguptemp.less:before {
+    transform: rotate(90deg);   
+}
+
+.block .switch span.tempmonitor {
+    font-size: 20px;
+    color: var(--colors-sub-text);
+}
+.block .switch span.tempmonitor:after {
+    height: 5px;
+    width: 5px;
+    border-width: 2px;
+    border-color: var(--colors-sub-text);
+    margin-left: 2px;
+}
+
+.block .switch span.comminguptemp {
+    font-size: 40px;
+    color: var(--colors-text);
+}
+.block .switch span.comminguptemp:after {
+    height: 8px;
+    width: 8px;
+    border-width: 5px;
+    border-color: var(--colors-text);
+    margin-left: 4px;
+}
+
+
+
+
+
+#settings {
+    position: fixed;
+    width: calc(100% - 32px - 32px);
+    /* height: calc(50% - 32px - 32px); */
+    top: 16px;
+    left: 16px;
+    background-color: var(--colors-blocks);
+    border-radius: 15px;
+    /* position: relative; */
+    padding-left: 16px;
+    padding-right: 16px;
+    z-index: 1000;
+}
+
+#settings:not(.active) {
+    display: none;
+}
+
+#main.disabled {
+    opacity: .3;
+    pointer-events: none;
+}
+
+.tempchange {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #a8a8a8;
+    border: none;
+    font-size: 30px;
+    line-height: 50px;
+    color: var(--colors-blocks);
+    text-align: center;
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.tempchange:active {
+    background-color: #e54f0a;
+}
+
+.tempchange.increase {
+    background-image: url('icon-plus.png');
+}
+
+.tempchange.decrease {
+    background-image: url('icon-min.png');
+}
+
+.tempchange:first-child {
+    margin-bottom: 16px;
+}
+
+.temp_left {
+    width: calc(100% - 55px - 16px);
+    display: inline-block;
+    margin-right: 16px;
+    margin-top: calc((116px - 72px) / 2);
+}
+.temp_right {
+    width: 50px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.programbtn {
+    display: inline-block;
+    margin-right: 3px;
+    margin-bottom: 8px;
+    width: calc(100% / 2 - 4px);
+    background-color: var(--colors-background);
+    height: 70px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 70px;
+    font-weight: 100;
+}
+
+
+.programbtn.active {
+    color: #dd4300;
+}
+
+.programbtn:active {
+    color: var(--colors-blocks);
+    background-color: #e54f0a;
+}
+
+.programbtn:nth-child(even) {
+    margin-right: 0px;
+}
+
+.connection.loading span.connection_status {
+    color: rgb(255, 190, 79);
+}
+.connection.connected span.connection_status {
+    color: var(--colors-positive);
+}
+.connection.disconnected span.connection_status {
+    color: var(--colors-negative);
+}
+
+span.credits, span.connection_status{
+    display: block;
+    text-align: center;
+    font-weight: 100;
+    font-size: 12px;
+}
+
+input.niceinput {
+    background-color: var(--colors-background);
+    border: none;
+    padding: 16px;
+    display: block;
+    width: calc(100%);
+    margin-bottom: 8px;
+}
+
+input.submitbtn {
+    background-color: transparent;
+    border: none;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--colors-text);
+}
+
+.nextevent {
+    position: relative;
+    display: block;
+    margin-top: 16px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.nextevent .togglebutton {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+.togglebutton {
+    width: 60px;
+    height: 30px;
+    position: relative;
+    border-radius: 20px;
+    background-color: var(--colors-background);
+    transition: 200ms ease;
+}
+.togglebutton::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    height: 28px;
+    width: 28px;
+    border-radius: 20px;
+    background-color: var(--colors-blocks);
+    transition: 200ms ease;
+}
+
+.togglebutton.active {
+    background-color: var(--colors-positive);
+}
+.togglebutton.active::after {
+    /* left: auto; */
+    /* right: 1px; */
+    left: calc(60px - 28px - 1px);
+}
+/* .togglebutton:not(.active) {
+    background-color: var(--colors-negative);
+} */
