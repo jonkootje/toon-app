@@ -64,7 +64,7 @@ var toon = {
             return false;
         } else {
 
-            var url = toon.getSetting('endpoint') + ':' + toon.getSetting('port') + '/happ_thermostat?action=changeSchemeState&state=2&temperatureState=' + changestate;
+            var url = toon.getSetting('endpoint') + ':' + toon.getSetting('port') + '/happ_thermstat?action=changeSchemeState&state=2&temperatureState=' + changestate;
             
             // Show new state before even requesting
             var lastdata = dashboard.lastData;
@@ -160,11 +160,11 @@ var toon = {
         var program = parseInt(dashboard.lastData.nextProgram);
         if (program == 1) {
             // ON - TURN OFF
-            var url = toon.getSetting('endpoint') + ':' + toon.getSetting('port') + '/happ_thermostat?action=changeSchemeState&state=0';
+            var url = toon.getSetting('endpoint') + ':' + toon.getSetting('port') + '/happ_thermstat?action=changeSchemeState&state=0';
             dashboard.lastData.nextProgram = -1;
         } else {
             // OFF - TURN ON
-            var url = toon.getSetting('endpoint') + ':' + toon.getSetting('port') + '/happ_thermostat?action=changeSchemeState&state=1';
+            var url = toon.getSetting('endpoint') + ':' + toon.getSetting('port') + '/happ_thermstat?action=changeSchemeState&state=1';
             dashboard.lastData.nextProgram = 1;
         }
 
