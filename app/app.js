@@ -64,8 +64,7 @@ var toon = {
             return false;
         } else {
 
-            // http://10.0.0.154/happ_thermostat?action=changeSchemeState&state=2&temperatureState=3
-            var url = 'http://10.0.0.154/happ_thermostat?action=changeSchemeState&state=2&temperatureState=' + changestate;
+            var url = toon.getSetting('endpoint') + ':' + toon.getSetting('port') + '/happ_thermostat?action=changeSchemeState&state=2&temperatureState=' + changestate;
             
             // Show new state before even requesting
             var lastdata = dashboard.lastData;
@@ -329,7 +328,14 @@ var dashboard = {
             }
 
             var now = new Date(parseInt(data.nextTime) * 1000);
-            var time = now.getHours() + ':' + now.getMinutes();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+
+            if (minutes < 10) {
+                var minutes = "0" + String(minutes);
+            }
+
+            var time = hours + ':' + minutes;
             if (data.nextTime == -1) {
                 time = '--:--';
             }
